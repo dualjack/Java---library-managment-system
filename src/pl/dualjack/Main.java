@@ -144,7 +144,7 @@ public class Main {
 		panel.add(lblIdUytkownika, gbc_lblIdUytkownika);
 		lblIdUytkownika.setForeground(Color.GRAY);
 		
-		// BUTTON ZA£ADUJ
+		// BUTTON ZAï¿½ADUJ
 		btnZaaduj = new JButton("Za\u0142aduj");
 		btnZaaduj.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -235,7 +235,7 @@ public class Main {
 		});
 		panel_1.add(btnZapisz, "cell 0 6,alignx center");
 		
-		//BUTTON USUÑ
+		//BUTTON USUï¿½
 		btnUsun = new JButton("USU\u0143");
 		btnUsun.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -270,12 +270,12 @@ public class Main {
 		panel_2.add(fieldBookID, "cell 1 0,alignx center,aligny center");
 		fieldBookID.setColumns(10);
 		
-		// BUTTON WYPO¯YCZ
+		// BUTTON WYPOï¿½YCZ
 		// ---------------------
 		btnWypoycz = new JButton("Wypo\u017Cycz");
 		panel_2.add(btnWypoycz, "cell 0 1,alignx center,aligny center");
 		
-		// BUTTON ZWRÓÆ
+		// BUTTON ZWRï¿½ï¿½
 		// ------------------
 		btnZwr = new JButton("Zwr\u00F3\u0107");
 		panel_2.add(btnZwr, "cell 1 1,alignx center,aligny center");
