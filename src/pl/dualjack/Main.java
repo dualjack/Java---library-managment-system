@@ -44,14 +44,6 @@ public class Main {
 	private JLabel lblIdKsiki;
 	private JButton btnWypoycz;
 	private JButton btnZwr;
-	private JTabbedPane tabbedPane;
-	private JScrollPane scrollBooks;
-	private JScrollPane scrollUsers;
-	private JScrollPane scrollAllView;
-	private JScrollPane scrollLog;
-	private JTable tableBooks;
-	private JTable tableUsers;
-	private JTable tableLog;
 	private DefaultTableModel modelBooks, modelClients, modelAllView, modelLog, modelWypozyczenia;
 	private JTable tableAllView;
 	private JTabbedPane tabbedPane_1;
@@ -67,6 +59,14 @@ public class Main {
 	private JLabel lblEmail;
 	private JTextField fieldEmail;
 	private JLabel lblTelefon;
+	private JTabbedPane tabbedPane;
+	private JScrollPane scrollBooks;
+	private JScrollPane scrollUsers;
+	private JScrollPane scrollAllView;
+	private JScrollPane scrollLog;
+	private JTable tableBooks;
+	private JTable tableUsers;
+	private JTable tableLog;
 	private JTextField fieldPhone;
 	private JButton btnZapisz;
 	private JCheckBox chckbxNowyUzytkonik;
@@ -426,22 +426,6 @@ public class Main {
 		
 	}
 	
-	public void refreshLog() throws SQLException{
-		Statement stmt = connection.createStatement();
-		ResultSet result = stmt.executeQuery("SELECT * FROM ALL_LOGS");
-		
-		for (int i = modelLog.getRowCount() - 1; i >= 0; i--) {
-			modelLog.removeRow(i);
-		}
-		
-		while(result.next()){
-			modelLog.addRow(
-					new Object[] {result.getString(1), result.getString(2), result.getString(3), result.getString(4), result.getString(5), result.getString(6), result.getString(7)}
-			);
-		}
-		
-	}
-	
 	public void refreshWypozyczenia() throws SQLException {
 		
 		Statement stmt = connection.createStatement();
@@ -462,16 +446,32 @@ public class Main {
 		
 	}
 	
+	public void refreshLog() throws SQLException{
+		Statement stmt = connection.createStatement();
+		ResultSet result = stmt.executeQuery("SELECT * FROM ALL_LOGS");
+		
+		for (int i = modelLog.getRowCount() - 1; i >= 0; i--) {
+			modelLog.removeRow(i);
+		}
+		
+		while(result.next()){
+			modelLog.addRow(
+					new Object[] {result.getString(1), result.getString(2), result.getString(3), result.getString(4), result.getString(5), result.getString(6), result.getString(7)}
+			);
+		}
+		
+	}
+	
 	public void refreshUserInfo() throws SQLException{
 		
 		Statement stmt = connection.createStatement();
 		ResultSet result = stmt.executeQuery("SELECT NAME, SURNAME, EMAIL, PHONE FROM CLIENTS WHERE CLIENT_ID ="+ fieldUserID.getText());
 		
 		result.next();
-		fieldName.setText(result.getString(1));
-		fieldLastName.setText(result.getString(2));
-		fieldEmail.setText(result.getString(3));
 		fieldPhone.setText(result.getString(4));
+		fieldName.setText(result.getString(1));
+		fieldEmail.setText(result.getString(3));
+		fieldLastName.setText(result.getString(2));
 		
 	}
 	
@@ -479,8 +479,8 @@ public class Main {
 		
 		refreshALLView();
 		refreshBooks();
-		refreshClients();
 		refreshLog();
+		refreshClients();
 		refreshWypozyczenia();
 		refreshUserInfo();
 		
